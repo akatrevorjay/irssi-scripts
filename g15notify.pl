@@ -37,8 +37,8 @@ Irssi::settings_add_str('g15notify', 'g15message_opts', '-d 5 -s 5');
 sub g15notify {
     my ($server, $summary, $message) = @_;
 
-	$message =~ s/([^A-Za-z0-9])/\\\1/g;
-	$summary =~ s/([^A-Za-z0-9])/\\\1/g;
+	$message =~ s/[^A-Za-z0-9]//g;
+	$summary =~ s/[^A-Za-z0-9]//g;
 
     my $cmd = "EXEC - g15message " . Irssi::settings_get_str('g15message_opts') . " -t $summary $message";
 
